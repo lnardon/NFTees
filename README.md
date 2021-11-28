@@ -1,4 +1,4 @@
-# [NFTee's](https://chub-crypto.web.app/ "Homepage")
+# [NFTee's](https://nftees.web.app/ "Homepage")
 
 NFTee's is a unique NFT website running on top of the Ethereum Ropsten Test Net. You'll need an Ethereum wallet to interact with the website, if you don't have one MetaMask may be a good option.
 
