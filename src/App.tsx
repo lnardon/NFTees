@@ -31,7 +31,7 @@ function App() {
     const acc = await web3.eth.getAccounts();
     const balance = await web3.eth.getBalance(acc[0]);
     setBalance(parseInt(balance));
-  }, []);
+  }, [ethEnabled, web3.eth]);
 
   useEffect(() => {
     load();
