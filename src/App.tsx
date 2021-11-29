@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Web3 from "web3";
 declare global {
   interface Window {
@@ -23,19 +23,19 @@ function App() {
     return false;
   };
 
-  const load = async () => {
-    if (await !ethEnabled()) {
+  const load = useCallback(async () => {
+    if (!ethEnabled()) {
       alert("Please install MetaMask to use this dApp!");
     }
 
     const acc = await web3.eth.getAccounts();
     const balance = await web3.eth.getBalance(acc[0]);
     setBalance(parseInt(balance));
-  };
+  }, []);
 
   useEffect(() => {
     load();
-  }, []);
+  }, [load]);
 
   return (
     <div className="App">
