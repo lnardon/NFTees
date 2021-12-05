@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import Web3 from "web3";
+
+import { SplashSection } from "./components/SplashSection";
+
 declare global {
   interface Window {
     ethereum: any;
@@ -36,10 +39,11 @@ function App() {
   }, [web3]);
 
   return (
-    <div className="App">
+    <>
+      <SplashSection />
       <h1>NFTee's</h1>
       <h3>{`You account balance is : ${balance / 1000000000000000000} Eth`}</h3>
-    </div>
+    </>
   );
 }
 
