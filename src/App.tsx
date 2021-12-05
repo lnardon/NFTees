@@ -23,22 +23,22 @@ function App() {
     return false;
   };
 
-  useEffect(() => {
-    (async () => {
-      if (!ethEnabled()) {
-        alert("Please install MetaMask to use this dApp!");
-      }
+  // useEffect(() => {
+  //   (async () => {
+  //     if (!ethEnabled()) {
+  //       alert("Please install MetaMask to use this dApp!");
+  //     }
 
-      const acc = await web3.eth.getAccounts();
-      const balance = await web3.eth.getBalance(acc[0]);
-      setBalance(parseInt(balance));
-    })();
-  }, []);
+  //     const acc = await web3.eth.getAccounts();
+  //     const balance = await web3.eth.getBalance(acc[0]);
+  //     setBalance(parseInt(balance));
+  //   })();
+  // }, []);
 
   return (
     <div className="App">
       <h1>NFTee's</h1>
-      <h3>{`You account balance is : ${balance / 1000000000000000000} Eth`}</h3>
+      {/* <h3>{`You account balance is : ${balance / 1000000000000000000} Eth`}</h3> */}
     </div>
   );
 }
