@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.title {
+  color: #e5015a;
+  font-size: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.collectionItems {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.cardContainer {
+  max-width: 250px;
+  margin: 1rem 2rem;
+}
+
+.image {
+  width: 100%;
+}
+
+.cta {
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #fafafa;
+  background-color: #5801e5;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+}

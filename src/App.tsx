@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useMemo, useEffect, useCallback } from "react";
 import Web3 from "web3";
 
 import { SplashSection } from "./components/SplashSection";
+import { CollectionSection } from "./components/CollectionSection";
 
 declare global {
   interface Window {
@@ -10,10 +11,9 @@ declare global {
 }
 
 function App() {
-  let web3: Web3 = new Web3();
-  const [balance, setBalance] = useState(0);
+  let web3: Web3 = useMemo(() => new Web3(), []);
 
-  const ethEnabled = async () => {
+  const ethEnabled = useCallback(async () => {
     if (typeof window.ethereum !== "undefined") {
       web3 = new Web3(window.ethereum);
       try {
@@ -24,25 +24,20 @@ function App() {
       }
     }
     return false;
-  };
+  }, [web3]);
 
   useEffect(() => {
     (async () => {
       if (!ethEnabled()) {
         alert("Please install MetaMask to use this dApp!");
       }
-
-      const acc = await web3.eth.getAccounts();
-      const balance = await web3.eth.getBalance(acc[0]);
-      setBalance(parseInt(balance));
     })();
-  }, [web3]);
+  }, [web3, ethEnabled]);
 
   return (
     <>
       <SplashSection />
-      <h1>NFTee's</h1>
-      <h3>{`You account balance is : ${balance / 1000000000000000000} Eth`}</h3>
+      <CollectionSection />
     </>
   );
 }
