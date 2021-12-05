@@ -1,9 +1,9 @@
 # [NFTee's](https://nftees.web.app/ "Homepage")
 
-NFTee's is a unique NFT website running on top of the Ethereum Ropsten Test Net. You'll need an Ethereum wallet to interact with the website, if you don't have one MetaMask may be a good option.
+NFTee's is a NFT website running on top of the Ethereum Ropsten Test Net. You'll need MetaMask to interact with the application.
 
 <p align="center">
-  <img src="./demo.gif">
+  <img src="./demo.png">
 </p>
 
 ## [Access it here](https://nftees.web.app/ "Homepage")
