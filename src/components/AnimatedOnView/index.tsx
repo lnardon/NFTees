@@ -9,7 +9,7 @@ interface PropsInterface {
   className: string;
 }
 
-function AnimatedOnViewport({
+export default function AnimatedOnView({
   renderProps,
   variants,
   index = null,
@@ -32,10 +32,12 @@ function AnimatedOnViewport({
       variants={variants}
       custom={index}
       className={className}
+      transition={{
+        ease: [0.4, 0.6, 1, 0.85],
+        default: { duration: 0.7 },
+      }}
     >
       {renderProps()}
     </motion.div>
   );
 }
-
-export default AnimatedOnViewport;
