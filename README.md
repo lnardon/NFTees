@@ -3,7 +3,7 @@
 NFTee's is a NFT website running on top of the Ethereum Ropsten Test Net. You'll need MetaMask to interact with the application.
 
 <p align="center">
-  <img src="./demo.png">
+  <img src="./demo.PNG">
 </p>
 
 ## [Access it here](https://nftees.web.app/ "Homepage")
