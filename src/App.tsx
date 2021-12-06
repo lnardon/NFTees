@@ -3,6 +3,7 @@ import Web3 from "web3";
 
 import { SplashSection } from "./components/SplashSection";
 import { CollectionSection } from "./components/CollectionSection";
+import { ActionsSection } from "./components/ActionsSection";
 
 declare global {
   interface Window {
@@ -38,6 +39,7 @@ function App() {
     <>
       <SplashSection />
       <CollectionSection />
+      <ActionsSection />
     </>
   );
 }
