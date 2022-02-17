@@ -1,20 +1,30 @@
 .actionCardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #f1f1f1;
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 1rem;
   cursor: pointer;
   margin: 1rem;
+  width: 275px;
+  border: 0.25rem solid #f1f1f1;
+}
+
+.actionCardContainer:hover {
+  background-color: #171717;
+  color: #f1f1f1;
 }
 
 .actionCardIcon {
   width: 75px;
   padding: 0.5rem;
+  margin-right: 1rem;
 }
 
 .actionCardLabel {
-  text-align: center;
-  margin: 0rem;
-  max-width: 75px;
-  font-size: 1rem;
+  text-align: left;
+  margin: 1rem;
+  font-size: 1.25rem;
   font-weight: bold;
 }
