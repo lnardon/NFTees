@@ -5,7 +5,15 @@ import logo from "../../assets/logo.svg";
 
 import styles from "./styles.module.css";
 
-export function CollectionSection() {
+interface PropsInterface {
+  getStandardEditionNFT: () => void;
+  getPinkEditionNFT: () => void;
+}
+
+export function CollectionSection({
+  getStandardEditionNFT,
+  getPinkEditionNFT,
+}: PropsInterface) {
   return (
     <div className={styles.container}>
       <AnimatedOnView
@@ -22,8 +30,14 @@ export function CollectionSection() {
           className={styles.cardContainer}
           renderProps={() => (
             <div>
-              <img src={logo} alt="NFT Card" className={styles.image} />
-              <button className={styles.cta}>Buy NFT</button>
+              <img
+                src={logo}
+                alt="Standart NFT Card"
+                className={styles.image}
+              />
+              <button className={styles.cta} onClick={getStandardEditionNFT}>
+                Buy NFT
+              </button>
             </div>
           )}
         />
@@ -33,8 +47,14 @@ export function CollectionSection() {
           className={styles.cardContainer}
           renderProps={() => (
             <div>
-              <img src={logo} alt="NFT Card" className={styles.image} />
-              <button className={styles.cta}>Buy NFT</button>
+              <img
+                src={logo}
+                alt="Pink Edition NFT Card"
+                className={styles.image}
+              />
+              <button className={styles.cta} onClick={getPinkEditionNFT}>
+                Buy NFT
+              </button>
             </div>
           )}
         />
@@ -44,8 +64,14 @@ export function CollectionSection() {
           className={styles.cardContainer}
           renderProps={() => (
             <div className={styles.card}>
-              <img src={logo} alt="NFT Card" className={styles.image} />
-              <button className={styles.cta}>Buy NFT</button>
+              <img
+                src={logo}
+                alt="Founders NFT Card"
+                className={styles.image}
+              />
+              <button className={styles.cta} disabled={true}>
+                Buy NFT
+              </button>
             </div>
           )}
         />

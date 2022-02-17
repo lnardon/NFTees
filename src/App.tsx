@@ -44,7 +44,10 @@ function App() {
   return (
     <>
       <SplashSection />
-      <CollectionSection />
+      <CollectionSection
+        getStandardEditionNFT={() => alert("Work in Progress")}
+        getPinkEditionNFT={() => alert("Work in Progress")}
+      />
       <ActionsSection
         connectMetamask={() => connect(setUserAddress)}
         userAddress={userAddress}
