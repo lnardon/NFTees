@@ -1,13 +1,15 @@
+import styles from "./styles.module.css";
 interface ActionCardInterface {
   image: string;
   label: string;
+  onClick: () => void;
 }
 
-export function ActionCard({ image, label }: ActionCardInterface) {
+export function ActionCard({ image, label, onClick }: ActionCardInterface) {
   return (
-    <div>
-      <img src={image} alt="Icon" />
-      <h4>{label}</h4>
+    <div className={styles.actionCardContainer} onClick={onClick}>
+      <img className={styles.actionCardIcon} src={image} alt="Icon" />
+      <h4 className={styles.actionCardLabel}>{label}</h4>
     </div>
   );
 }

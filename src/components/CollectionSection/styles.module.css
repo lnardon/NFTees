@@ -5,6 +5,7 @@
   justify-content: space-between;
   flex-direction: column;
   padding: 2rem;
+  margin-bottom: 5rem;
 }
 
 .title {
