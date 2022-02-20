@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import TransferIcon from "../../assets/transferIcon.png";
 import WalletIcon from "../../assets/walletIcon.png";
 import ContractIcon from "../../assets/contractIcon.png";
+import DisconnectIcon from "../../assets/disconnectIcon.png";
 
 export function ActionsSection({
   connectMetamask,
@@ -18,7 +19,6 @@ export function ActionsSection({
       {userAddress === "" && (
         <button onClick={connectMetamask}>Connect Metamask</button>
       )}
-
       {userAddress.length > 0 && (
         <div className={styles.actionsDiv}>
           <ActionCard
@@ -40,6 +40,11 @@ export function ActionsSection({
                 "target=_blank"
               )
             }
+          />
+          <ActionCard
+            image={DisconnectIcon}
+            label="Disconnect Wallet"
+            onClick={() => alert("Discontinued")}
           />
         </div>
       )}
