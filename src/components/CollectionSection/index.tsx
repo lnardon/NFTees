@@ -1,8 +1,10 @@
 import AnimatedOnView from "../AnimatedOnView";
 import { slideUp } from "../../animations/slideUp";
 import { slideLeft } from "../../animations/slideLeft";
-import logo from "../../assets/logo.svg";
 
+import Founders from "../../assets/fe.png";
+import Standard from "../../assets/st.png";
+import Pink from "../../assets/pe.png";
 import styles from "./styles.module.css";
 
 interface PropsInterface {
@@ -20,7 +22,7 @@ export function CollectionSection({
         index={0}
         variants={slideLeft}
         className={styles.cardContainer}
-        renderProps={() => <h3 className={styles.title}>Our Collection</h3>}
+        renderProps={() => <h3 className={styles.title}>Collection</h3>}
       />
 
       <div className={styles.collectionItems}>
@@ -31,7 +33,7 @@ export function CollectionSection({
           renderProps={() => (
             <div>
               <img
-                src={logo}
+                src={Standard}
                 alt="Standart NFT Card"
                 className={styles.image}
               />
@@ -48,7 +50,7 @@ export function CollectionSection({
           renderProps={() => (
             <div>
               <img
-                src={logo}
+                src={Pink}
                 alt="Pink Edition NFT Card"
                 className={styles.image}
               />
@@ -65,7 +67,7 @@ export function CollectionSection({
           renderProps={() => (
             <div className={styles.card}>
               <img
-                src={logo}
+                src={Founders}
                 alt="Founders NFT Card"
                 className={styles.image}
               />
