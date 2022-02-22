@@ -79,10 +79,21 @@ function App() {
     });
   }
 
+  async function handleTransfer(wallet: string, tokenId: number) {
+    let a = new web3.eth.Contract(
+      NFTEEContract.abi as AbiItem[],
+      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
+    );
+    let t = await a.methods
+      .safeTransferFrom(account, wallet, tokenId)
+      .send({ from: account, value: 0 });
+    console.log(t);
+  }
+
   function modalContent(type = 0) {
     switch (type) {
       case 0:
-        return <Transfer />;
+        return <Transfer handleTransfer={handleTransfer} />;
       default:
         return null;
     }
