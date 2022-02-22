@@ -15524,7 +15524,7 @@
     "web3-core-subscriptions" "1.6.1"
     "web3-net" "1.6.1"
 
-"web3-utils@1.6.1":
+"web3-utils@^1.6.1", "web3-utils@1.6.1":
   "integrity" "sha512-RidGKv5kOkcerI6jQqDFDoTllQQqV+rPhTzZHhmbqtFObbYpU93uc+yG1LHivRTQhA6llIx67iudc/vzisgO+w=="
   "resolved" "https://registry.npmjs.org/web3-utils/-/web3-utils-1.6.1.tgz"
   "version" "1.6.1"
