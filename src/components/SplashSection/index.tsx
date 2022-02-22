@@ -2,10 +2,14 @@ import AnimatedOnView from "../AnimatedOnView";
 import { slideUp } from "../../animations/slideUp.js";
 import { slideLeft } from "../../animations/slideLeft.js";
 
-import logo from "../../assets/logo.svg";
+import SplashIllustration from "../../assets/SplashIllustration.svg";
 import "./styles.css";
 
-export const SplashSection = () => {
+interface PropsInterface {
+  scrollToSection: () => void;
+}
+
+export const SplashSection = ({ scrollToSection }: PropsInterface) => {
   return (
     <div className="container">
       <div className="left">
@@ -18,8 +22,8 @@ export const SplashSection = () => {
         <AnimatedOnView
           renderProps={() => (
             <h2 className="subtitle">
-              Get your free and unique NFTee NFT for the Ethereum Ropsten
-              Network.
+              Get your unique NFTEE from our collection on the Ethereum Ropsten
+              Test Network.
             </h2>
           )}
           index={0}
@@ -28,10 +32,7 @@ export const SplashSection = () => {
         />
         <AnimatedOnView
           renderProps={() => (
-            <button
-              className="cta"
-              onClick={() => alert("TODO: Scroll to NFT minter section.")}
-            >
+            <button className="cta" onClick={scrollToSection}>
               Get NFTee
             </button>
           )}
@@ -42,7 +43,13 @@ export const SplashSection = () => {
       </div>
       <div className="right">
         <AnimatedOnView
-          renderProps={() => <img className="logo" src={logo} alt="Logo" />}
+          renderProps={() => (
+            <img
+              className="splashIllustration"
+              src={SplashIllustration}
+              alt="Illustration"
+            />
+          )}
           index={0}
           className="test1"
           variants={slideUp}
