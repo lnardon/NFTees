@@ -13,7 +13,6 @@ body {
 
 #root {
   width: 100%;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,4 +23,10 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.ReactModal__Content {
+  height: fit-content;
+  top: 50% !important;
+  transform: translateY(-50%);
 }

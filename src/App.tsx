@@ -7,6 +7,8 @@ import { SplashSection } from "./components/SplashSection";
 import { CollectionSection } from "./components/CollectionSection";
 import { ActionsSection } from "./components/ActionsSection";
 import Modal from "./components/Modal";
+import Transfer from "./components/Modal/content/Transfer";
+// import Owner from "./components/Modal/content/Owner";
 
 declare global {
   interface Window {
@@ -17,7 +19,6 @@ declare global {
 function App() {
   const [web3, setWeb3] = useState(new Web3());
   const [account, setAccount] = useState("");
-  const [contract, setContract] = useState<any>();
   const [isOpen, setIsOpen] = useState(false);
 
   async function activate() {
@@ -43,8 +44,8 @@ function App() {
       NFTEEContract.abi as AbiItem[],
       "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
     );
-    let t = await a.methods.mintStandard().call();
-    alert(t);
+    let t = await a.methods.mintStandard().send({ from: account, value: 0 });
+    window.open(`https://ropsten.etherscan.io/tx/${t.transactionHash}`);
   }
 
   async function getPinkEditionNFT() {
@@ -52,7 +53,9 @@ function App() {
       NFTEEContract.abi as AbiItem[],
       "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
     );
-    let t = await a.methods.mintPinkEdition().call();
+    let t = await a.methods
+      .mintPinkEdition()
+      .send({ from: account, value: 1000000000000000000 });
     alert(t);
   }
 
@@ -61,7 +64,9 @@ function App() {
       NFTEEContract.abi as AbiItem[],
       "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
     );
-    let t = await a.methods.mintFoundersEdition().call();
+    let t = await a.methods
+      .mintFoundersEdition()
+      .send({ from: account, value: 5000000000000000000 });
     alert(t);
   }
 
@@ -74,30 +79,21 @@ function App() {
     });
   }
 
-  useEffect(() => {
-    let a = new web3.eth.Contract(
-      NFTEEContract.abi as AbiItem[],
-      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
-    );
-    setContract(a);
-  }, []);
-
-  const transferOwnership = () => {
-    return (
-      <div>
-        <h1>Transfer ownership</h1>
-        <input type="text" />
-        <button onClick={() => console.log("e")}>Send</button>
-      </div>
-    );
-  };
+  function modalContent(type = 0) {
+    switch (type) {
+      case 0:
+        return <Transfer />;
+      default:
+        return null;
+    }
+  }
 
   return (
     <>
       <Modal
         isOpen={isOpen}
         handleClose={() => setIsOpen(false)}
-        renderProps={transferOwnership}
+        renderProps={modalContent}
       />
       <SplashSection scrollToSection={scrollToSection} />
       <CollectionSection
