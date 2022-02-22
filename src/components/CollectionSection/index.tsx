@@ -10,11 +10,13 @@ import styles from "./styles.module.css";
 interface PropsInterface {
   getStandardEditionNFT: () => void;
   getPinkEditionNFT: () => void;
+  getFoundersNFT: () => void;
 }
 
 export function CollectionSection({
   getStandardEditionNFT,
   getPinkEditionNFT,
+  getFoundersNFT,
 }: PropsInterface) {
   return (
     <div className={styles.container}>
@@ -25,20 +27,20 @@ export function CollectionSection({
         renderProps={() => <h3 className={styles.title}>Collection</h3>}
       />
 
-      <div className={styles.collectionItems}>
+      <div className={styles.collectionItems + " collectionRef"}>
         <AnimatedOnView
           index={0}
           variants={slideUp}
           className={styles.cardContainer}
           renderProps={() => (
-            <div>
+            <div className={styles.card}>
               <img
                 src={Standard}
-                alt="Standart NFT Card"
+                alt="Standard NFT Card"
                 className={styles.image}
               />
               <button className={styles.cta} onClick={getStandardEditionNFT}>
-                Buy NFT
+                Get Standard NFT
               </button>
             </div>
           )}
@@ -48,14 +50,14 @@ export function CollectionSection({
           variants={slideUp}
           className={styles.cardContainer}
           renderProps={() => (
-            <div>
+            <div className={styles.card}>
               <img
                 src={Pink}
                 alt="Pink Edition NFT Card"
                 className={styles.image}
               />
               <button className={styles.cta} onClick={getPinkEditionNFT}>
-                Buy NFT
+                Buy Pink NFT
               </button>
             </div>
           )}
@@ -71,8 +73,8 @@ export function CollectionSection({
                 alt="Founders NFT Card"
                 className={styles.image}
               />
-              <button className={styles.cta} disabled={true}>
-                Buy NFT
+              <button className={styles.cta} onClick={getFoundersNFT}>
+                Buy Founders NFT
               </button>
             </div>
           )}
