@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 1rem;
+}
+
 .title {
   color: #e5015a;
   font-size: 3rem;
@@ -6,10 +12,31 @@
   margin-bottom: 2rem;
 }
 
+.connectWalletBtn {
+  border: 0.2rem solid #fafafa;
+  color: #fafafa;
+  background-color: #e5015a;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  cursor: pointer;
+  margin: 0rem 1rem 2rem 1rem;
+  transition: all 0.3s ease;
+  border-radius: 0.125rem;
+}
+
+.connectWalletBtn:hover {
+  border: 0.2rem solid #e5015a;
+  color: #fafafa;
+  background-color: transparent;
+  transform: scale(1.1);
+}
+
 .actionsDiv {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 5rem;
 }

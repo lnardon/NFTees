@@ -9,6 +9,7 @@
   margin: 1rem;
   width: 275px;
   border: 0.25rem solid #f1f1f1;
+  transition: all 0.3s;
 }
 
 .actionCardContainer:hover {
