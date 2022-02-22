@@ -3,28 +3,32 @@ import styles from "./styles.module.css";
 
 import TransferIcon from "../../assets/transferIcon.png";
 import WalletIcon from "../../assets/walletIcon.png";
-import ContractIcon from "../../assets/contractIcon.png";
-import DisconnectIcon from "../../assets/disconnectIcon.png";
+import EtherscanIcon from "../../assets/etherscan.svg";
+import ViewIcon from "../../assets/view.svg";
 
 export function ActionsSection({
   connectMetamask,
   userAddress,
+  transferAction,
 }: {
   connectMetamask: () => void;
   userAddress: string;
+  transferAction: () => void;
 }) {
   return (
-    <div>
+    <div className={styles.container}>
       <h3 className={styles.title}>NFTee Actions</h3>
       {userAddress === "" && (
-        <button onClick={connectMetamask}>Connect Metamask</button>
+        <button className={styles.connectWalletBtn} onClick={connectMetamask}>
+          Connect Metamask
+        </button>
       )}
       {userAddress.length > 0 && (
         <div className={styles.actionsDiv}>
           <ActionCard
             image={TransferIcon}
             label="Transfer Ownership"
-            onClick={() => alert("In Progress")}
+            onClick={transferAction}
           />
           <ActionCard
             image={WalletIcon}
@@ -32,7 +36,7 @@ export function ActionsSection({
             onClick={() => alert("In Progress")}
           />
           <ActionCard
-            image={ContractIcon}
+            image={EtherscanIcon}
             label="View Contract"
             onClick={() =>
               window.open(
@@ -42,8 +46,8 @@ export function ActionsSection({
             }
           />
           <ActionCard
-            image={DisconnectIcon}
-            label="Disconnect Wallet"
+            image={ViewIcon}
+            label="View NFTEE"
             onClick={() => alert("Discontinued")}
           />
         </div>

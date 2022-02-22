@@ -2,22 +2,18 @@ import { useState } from "react";
 import Modal from "react-modal";
 
 interface PropsInterface {
+  isOpen: boolean;
+  handleClose: () => {};
   renderProps: () => {};
 }
 
-const BaseModal: any = ({ renderProps }: PropsInterface) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+const BaseModal: any = ({
+  isOpen,
+  handleClose,
+  renderProps,
+}: PropsInterface) => {
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      contentLabel="Example Modal"
-    >
+    <Modal isOpen={isOpen} onRequestClose={handleClose}>
       {renderProps()}
     </Modal>
   );
