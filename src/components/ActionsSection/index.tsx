@@ -13,7 +13,7 @@ export function ActionsSection({
 }: {
   connectMetamask: () => void;
   userAddress: string;
-  openModal: () => void;
+  openModal: (index: number) => void;
 }) {
   return (
     <div className={styles.container}>
@@ -28,12 +28,12 @@ export function ActionsSection({
           <ActionCard
             image={TransferIcon}
             label="Transfer Ownership"
-            onClick={openModal}
+            onClick={() => openModal(0)}
           />
           <ActionCard
             image={WalletIcon}
             label="Get NFTee Owner"
-            onClick={openModal}
+            onClick={() => openModal(1)}
           />
           <ActionCard
             image={EtherscanIcon}
@@ -48,7 +48,7 @@ export function ActionsSection({
           <ActionCard
             image={ViewIcon}
             label="View My NFTee's"
-            onClick={openModal}
+            onClick={() => openModal(2)}
           />
         </div>
       )}

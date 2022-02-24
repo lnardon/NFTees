@@ -21,6 +21,8 @@ function App() {
   const [web3, setWeb3] = useState(new Web3());
   const [account, setAccount] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [modalContentIndex, setModalContentIndex] = useState(23);
+  const contractAddress = "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624";
 
   async function activate() {
     if (window.ethereum) {
@@ -43,7 +45,7 @@ function App() {
   async function buyStandardNFT() {
     let a = new web3.eth.Contract(
       NFTEEContract.abi as AbiItem[],
-      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
+      contractAddress
     );
     let t = await a.methods.mintStandard().send({ from: account, value: 0 });
     window.open(`https://ropsten.etherscan.io/tx/${t.transactionHash}`);
@@ -52,7 +54,7 @@ function App() {
   async function getPinkEditionNFT() {
     let a = new web3.eth.Contract(
       NFTEEContract.abi as AbiItem[],
-      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
+      contractAddress
     );
     let t = await a.methods
       .mintPinkEdition()
@@ -63,7 +65,7 @@ function App() {
   async function getFoundersNFT() {
     let a = new web3.eth.Contract(
       NFTEEContract.abi as AbiItem[],
-      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
+      contractAddress
     );
     let t = await a.methods
       .mintFoundersEdition()
@@ -83,7 +85,7 @@ function App() {
   async function handleTransfer(wallet: string, tokenId: number) {
     let a = new web3.eth.Contract(
       NFTEEContract.abi as AbiItem[],
-      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
+      contractAddress
     );
     let t = await a.methods
       .safeTransferFrom(account, wallet, tokenId)
@@ -94,7 +96,7 @@ function App() {
   async function getOwner(tokenId: number) {
     let a = new web3.eth.Contract(
       NFTEEContract.abi as AbiItem[],
-      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
+      contractAddress
     );
     let t = await a.methods.ownerOf(tokenId).call();
     console.log(t);
@@ -103,7 +105,7 @@ function App() {
   async function getMyNFTees() {
     let a = new web3.eth.Contract(
       NFTEEContract.abi as AbiItem[],
-      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
+      contractAddress
     );
     let t = await a.methods
       .balanceOf(account)
@@ -111,17 +113,22 @@ function App() {
     console.log(t);
   }
 
-  function modalContent(type = 1) {
-    switch (type) {
+  function modalContent() {
+    switch (modalContentIndex) {
       case 0:
         return <Transfer handleTransfer={handleTransfer} />;
       case 1:
         return <Owner getOwner={getOwner} />;
-      case 3:
+      case 2:
         return <MyNFTees getMyNFTees={getMyNFTees} />;
       default:
         return null;
     }
+  }
+
+  function openModal(modalIndex: number) {
+    setModalContentIndex(modalIndex);
+    setIsOpen(true);
   }
 
   return (
@@ -140,7 +147,7 @@ function App() {
       <ActionsSection
         connectMetamask={activate}
         userAddress={account}
-        openModal={() => setIsOpen(true)}
+        openModal={openModal}
       />
     </>
   );

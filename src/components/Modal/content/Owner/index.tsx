@@ -13,7 +13,7 @@ const Owner = ({ getOwner }: TransferProps) => {
   return (
     <div className={styles.container}>
       <h1>Get NFTee Owner</h1>
-      <label htmlFor="tokenId">Type the NFTEE ID:</label>
+      <label htmlFor="tokenId">Type the NFTee ID:</label>
       <input
         name="tokenId"
         type="text"
