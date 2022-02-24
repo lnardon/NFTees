@@ -8,7 +8,7 @@ import { CollectionSection } from "./components/CollectionSection";
 import { ActionsSection } from "./components/ActionsSection";
 import Modal from "./components/Modal";
 import Transfer from "./components/Modal/content/Transfer";
-// import Owner from "./components/Modal/content/Owner";
+import Owner from "./components/Modal/content/Owner";
 
 declare global {
   interface Window {
@@ -90,10 +90,21 @@ function App() {
     console.log(t);
   }
 
-  function modalContent(type = 0) {
+  async function getOwner(tokenId: number) {
+    let a = new web3.eth.Contract(
+      NFTEEContract.abi as AbiItem[],
+      "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624"
+    );
+    let t = await a.methods.ownerOf(tokenId).call();
+    console.log(t);
+  }
+
+  function modalContent(type = 1) {
     switch (type) {
       case 0:
         return <Transfer handleTransfer={handleTransfer} />;
+      case 1:
+        return <Owner getOwner={getOwner} />;
       default:
         return null;
     }
@@ -116,6 +127,7 @@ function App() {
         connectMetamask={activate}
         userAddress={account}
         transferAction={() => setIsOpen(true)}
+        getOwnerAction={() => setIsOpen(true)}
       />
     </>
   );

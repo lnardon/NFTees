@@ -10,10 +10,12 @@ export function ActionsSection({
   connectMetamask,
   userAddress,
   transferAction,
+  getOwnerAction,
 }: {
   connectMetamask: () => void;
   userAddress: string;
   transferAction: () => void;
+  getOwnerAction: () => void;
 }) {
   return (
     <div className={styles.container}>
@@ -33,7 +35,7 @@ export function ActionsSection({
           <ActionCard
             image={WalletIcon}
             label="Get NFTee Owner"
-            onClick={() => alert("In Progress")}
+            onClick={getOwnerAction}
           />
           <ActionCard
             image={EtherscanIcon}
