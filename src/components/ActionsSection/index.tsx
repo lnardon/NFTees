@@ -9,13 +9,11 @@ import ViewIcon from "../../assets/view.svg";
 export function ActionsSection({
   connectMetamask,
   userAddress,
-  transferAction,
-  getOwnerAction,
+  openModal,
 }: {
   connectMetamask: () => void;
   userAddress: string;
-  transferAction: () => void;
-  getOwnerAction: () => void;
+  openModal: () => void;
 }) {
   return (
     <div className={styles.container}>
@@ -30,12 +28,12 @@ export function ActionsSection({
           <ActionCard
             image={TransferIcon}
             label="Transfer Ownership"
-            onClick={transferAction}
+            onClick={openModal}
           />
           <ActionCard
             image={WalletIcon}
             label="Get NFTee Owner"
-            onClick={getOwnerAction}
+            onClick={openModal}
           />
           <ActionCard
             image={EtherscanIcon}
@@ -49,8 +47,8 @@ export function ActionsSection({
           />
           <ActionCard
             image={ViewIcon}
-            label="View NFTEE"
-            onClick={() => alert("Discontinued")}
+            label="View My NFTee's"
+            onClick={openModal}
           />
         </div>
       )}
