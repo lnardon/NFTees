@@ -5,3 +5,77 @@
   flex-direction: column;
   padding: 2rem;
 }
+
+.closeDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.closeBtn {
+  position: absolute;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  width: 100%;
+  text-align: center;
+  color: #e5015a;
+}
+
+.hiddenLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  width: 100%;
+  margin: 0rem 0rem 0.25rem 0.5rem;
+  color: #fafafa !important;
+  opacity: 0;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  width: 100%;
+  margin: 0rem 0rem 0.25rem 0.5rem;
+  color: #fafafa !important;
+}
+
+.input {
+  font-size: 1.125rem;
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0rem 0rem 1rem 0rem;
+  outline: none;
+  border: 1px solid transparent;
+  border-left: 5px solid #e5015a;
+  border-radius: 0.25rem;
+  background: #2c2c2c !important;
+  color: #fafafa;
+}
+
+.input:focus {
+  border: 1px solid #fafafa;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  background-color: #5801e5;
+  border-radius: 0.125rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fafafa;
+  margin-top: 1rem;
+  cursor: pointer;
+}

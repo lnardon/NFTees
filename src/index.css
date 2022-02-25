@@ -28,5 +28,9 @@ body {
 .ReactModal__Content {
   height: fit-content;
   top: 50% !important;
-  transform: translateY(-50%);
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  background-color: #131313 !important;
+  border-radius: 0.75rem !important;
 }
