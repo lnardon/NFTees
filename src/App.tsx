@@ -47,39 +47,36 @@ function App() {
   }
 
   async function buyStandardNFT() {
-    let t = new Promise((resolve, reject) => {
-      contractInteraction.methods
+    try {
+      let response = contractInteraction.methods
         .mintStandard()
         .send({ from: account, value: 0 });
-    });
-
-    t.then((d: any) => {
-      let url = `https://ropsten.etherscan.io/tx/${d.transactionHash}`;
-      console.log(url);
-      window.open(url, "_blank");
-    });
+      alert(response);
+    } catch (err: any) {
+      alert(err.message);
+    }
   }
 
   async function getPinkEditionNFT() {
-    let a = new web3.eth.Contract(
-      NFTEEContract.abi as AbiItem[],
-      contractAddress
-    );
-    let t = await a.methods
-      .mintPinkEdition()
-      .send({ from: account, value: 1000000000000000000 });
-    alert(t);
+    try {
+      let response = await contractInteraction.methods
+        .mintPinkEdition()
+        .send({ from: account, value: 1000000000000000000 });
+      alert(response);
+    } catch (err: any) {
+      alert(err.message);
+    }
   }
 
   async function getFoundersNFT() {
-    let a = new web3.eth.Contract(
-      NFTEEContract.abi as AbiItem[],
-      contractAddress
-    );
-    let t = await a.methods
-      .mintFoundersEdition()
-      .send({ from: account, value: 5000000000000000000 });
-    alert(t);
+    try {
+      let response = await contractInteraction.methods
+        .mintFoundersEdition()
+        .send({ from: account, value: 5000000000000000000 });
+      alert(response);
+    } catch (err: any) {
+      alert(err.message);
+    }
   }
 
   function scrollToSection() {
@@ -92,34 +89,34 @@ function App() {
   }
 
   async function handleTransfer(wallet: string, tokenId: number) {
-    let a = new web3.eth.Contract(
-      NFTEEContract.abi as AbiItem[],
-      contractAddress
-    );
-    let t = await a.methods
-      .safeTransferFrom(account, wallet, tokenId)
-      .send({ from: account, value: 0 });
-    console.log(t);
+    try {
+      let t = await contractInteraction.methods
+        .safeTransferFrom(account, wallet, tokenId)
+        .send({ from: account, value: 0 });
+      alert(t);
+    } catch (err: any) {
+      alert(err.message);
+    }
   }
 
   async function getOwner(tokenId: number) {
-    let a = new web3.eth.Contract(
-      NFTEEContract.abi as AbiItem[],
-      contractAddress
-    );
-    let t = await a.methods.ownerOf(tokenId).call();
-    console.log(t);
+    try {
+      let t = await contractInteraction.methods.ownerOf(tokenId).call();
+      alert(`The NFTee ID ${tokenId} belongs to the wallet: ${t}`);
+    } catch (err: any) {
+      alert(err.message);
+    }
   }
 
   async function getMyNFTees() {
-    let a = new web3.eth.Contract(
-      NFTEEContract.abi as AbiItem[],
-      contractAddress
-    );
-    let t = await a.methods
-      .balanceOf(account)
-      .send({ from: account, value: 0 });
-    console.log(t);
+    try {
+      let response = await contractInteraction.methods
+        .balanceOf(account)
+        .send({ from: account, value: 0 });
+      alert(response);
+    } catch (err: any) {
+      alert(err.message);
+    }
   }
 
   function modalContent() {
