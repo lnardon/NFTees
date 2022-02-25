@@ -4,25 +4,47 @@ import styles from "./styles.module.css";
 
 interface TransferProps {
   getOwner: (tokenId: number) => void;
+  handleClose: () => void;
 }
 
-const Owner = ({ getOwner }: TransferProps) => {
-  const [wallet, setWallet] = useState("");
-  const [tokenId, setTokenId] = useState(0);
+const Transfer = ({ getOwner, handleClose }: TransferProps) => {
+  const [tokenId, setTokenId] = useState(-1);
+
+  function hasContent(variable: number) {
+    return variable >= 0;
+  }
 
   return (
     <div className={styles.container}>
-      <h1>Get NFTee Owner</h1>
-      <label htmlFor="tokenId">Type the NFTee ID:</label>
+      <div className={styles.closeDiv}>
+        <img
+          onClick={handleClose}
+          src="https://cdn-icons-png.flaticon.com/512/463/463612.png"
+          alt="Close Icon"
+          className={styles.closeBtn}
+        />
+      </div>
+      <h1 className={styles.title}>Get NFTee Owner</h1>
+      {
+        <label
+          htmlFor="tokenId"
+          className={hasContent(tokenId) ? styles.label : styles.hiddenLabel}
+        >
+          Token ID:
+        </label>
+      }
       <input
         name="tokenId"
-        type="text"
-        placeholder="23"
+        type="number"
+        placeholder="NFTee ID"
         onChange={(e) => setTokenId(parseInt(e.target.value))}
+        className={styles.input}
       />
-      <button onClick={() => getOwner(tokenId)}>Get Owner</button>
+      <button onClick={() => getOwner(tokenId)} className={styles.btn}>
+        Get Owner
+      </button>
     </div>
   );
 };
 
-export default Owner;
+export default Transfer;
