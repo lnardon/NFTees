@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 
 interface TransferProps {
   getMyNFTees: () => void;
+  handleClose: () => void;
 }
 
 const MyNFTees = ({ getMyNFTees }: TransferProps) => {

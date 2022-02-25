@@ -23,6 +23,10 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [modalContentIndex, setModalContentIndex] = useState(23);
   const contractAddress = "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624";
+  const contractInteraction = new web3.eth.Contract(
+    NFTEEContract.abi as AbiItem[],
+    contractAddress
+  );
 
   async function activate() {
     if (window.ethereum) {
@@ -43,12 +47,17 @@ function App() {
   }
 
   async function buyStandardNFT() {
-    let a = new web3.eth.Contract(
-      NFTEEContract.abi as AbiItem[],
-      contractAddress
-    );
-    let t = await a.methods.mintStandard().send({ from: account, value: 0 });
-    window.open(`https://ropsten.etherscan.io/tx/${t.transactionHash}`);
+    let t = new Promise((resolve, reject) => {
+      contractInteraction.methods
+        .mintStandard()
+        .send({ from: account, value: 0 });
+    });
+
+    t.then((d: any) => {
+      let url = `https://ropsten.etherscan.io/tx/${d.transactionHash}`;
+      console.log(url);
+      window.open(url, "_blank");
+    });
   }
 
   async function getPinkEditionNFT() {
@@ -116,11 +125,23 @@ function App() {
   function modalContent() {
     switch (modalContentIndex) {
       case 0:
-        return <Transfer handleTransfer={handleTransfer} />;
+        return (
+          <Transfer
+            handleTransfer={handleTransfer}
+            handleClose={() => setIsOpen(false)}
+          />
+        );
       case 1:
-        return <Owner getOwner={getOwner} />;
+        return (
+          <Owner getOwner={getOwner} handleClose={() => setIsOpen(false)} />
+        );
       case 2:
-        return <MyNFTees getMyNFTees={getMyNFTees} />;
+        return (
+          <MyNFTees
+            getMyNFTees={getMyNFTees}
+            handleClose={() => setIsOpen(false)}
+          />
+        );
       default:
         return null;
     }
