@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Web3 from "web3";
 import { AbiItem } from "web3-utils";
 import NFTEEContract from "./contract/NFTEE.json";
@@ -21,7 +21,7 @@ function App() {
   const [web3, setWeb3] = useState(new Web3());
   const [account, setAccount] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [modalContentIndex, setModalContentIndex] = useState(23);
+  const [modalContentIndex, setModalContentIndex] = useState(4);
   const contractAddress = "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624";
   const contractInteraction = new web3.eth.Contract(
     NFTEEContract.abi as AbiItem[],
@@ -46,36 +46,50 @@ function App() {
     setAccount(accounts[0]);
   }
 
+  function isLoggedIn() {
+    if (account.length < 1) {
+      activate();
+      return false;
+    }
+    return true;
+  }
+
   async function buyStandardNFT() {
-    try {
-      let response = contractInteraction.methods
-        .mintStandard()
-        .send({ from: account, value: 0 });
-      alert(response);
-    } catch (err: any) {
-      alert(err.message);
+    if (isLoggedIn()) {
+      try {
+        let response = await contractInteraction.methods
+          .mintStandard()
+          .send({ from: account, value: 0 });
+        alert(response);
+      } catch (err: any) {
+        alert(err.message);
+      }
     }
   }
 
   async function getPinkEditionNFT() {
-    try {
-      let response = await contractInteraction.methods
-        .mintPinkEdition()
-        .send({ from: account, value: 1000000000000000000 });
-      alert(response);
-    } catch (err: any) {
-      alert(err.message);
+    if (isLoggedIn()) {
+      try {
+        let response = await contractInteraction.methods
+          .mintPinkEdition()
+          .send({ from: account, value: 1000000000000000000 });
+        alert(response);
+      } catch (err: any) {
+        alert(err.message);
+      }
     }
   }
 
   async function getFoundersNFT() {
-    try {
-      let response = await contractInteraction.methods
-        .mintFoundersEdition()
-        .send({ from: account, value: 5000000000000000000 });
-      alert(response);
-    } catch (err: any) {
-      alert(err.message);
+    if (isLoggedIn()) {
+      try {
+        let response = await contractInteraction.methods
+          .mintFoundersEdition()
+          .send({ from: account, value: 5000000000000000000 });
+        alert(response);
+      } catch (err: any) {
+        alert(err.message);
+      }
     }
   }
 
