@@ -9,10 +9,12 @@ import ViewIcon from "../../assets/view.svg";
 export function ActionsSection({
   connectMetamask,
   userAddress,
+  contract,
   openModal,
 }: {
   connectMetamask: () => void;
   userAddress: string;
+  contract: string;
   openModal: (index: number) => void;
 }) {
   return (
@@ -40,8 +42,8 @@ export function ActionsSection({
             label="View Contract"
             onClick={() =>
               window.open(
-                "https://ropsten.etherscan.io/address/0x44AfB6114a02D987c252868405fB61488318d282",
-                "target=_blank"
+                `https://ropsten.etherscan.io/address/${contract}`,
+                "_blank"
               )
             }
           />

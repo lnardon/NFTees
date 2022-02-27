@@ -163,6 +163,7 @@ function App() {
         connectMetamask={activate}
         userAddress={account}
         openModal={openModal}
+        contract={contractAddress}
       />
     </>
   );
