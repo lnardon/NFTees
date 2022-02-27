@@ -33,15 +33,6 @@
   color: #e5015a;
 }
 
-.hiddenLabel {
-  font-size: 0.85rem;
-  font-weight: 500;
-  width: 100%;
-  margin: 0rem 0rem 0.25rem 0.5rem;
-  color: #fafafa !important;
-  opacity: 0;
-}
-
 .label {
   font-size: 0.85rem;
   font-weight: 500;
@@ -77,5 +68,21 @@
   font-weight: bold;
   color: #fafafa;
   margin-top: 1rem;
+  cursor: pointer;
+}
+
+.ownerWallet {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  color: #fafafa;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+span:hover {
+  color: #5801e5;
+  font-weight: 500;
   cursor: pointer;
 }

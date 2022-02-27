@@ -111,24 +111,9 @@ function App() {
     });
   }
 
-  async function handleTransfer(wallet: string, tokenId: number) {
-    try {
-      let t = await contractInteraction.methods
-        .safeTransferFrom(account, wallet, tokenId)
-        .send({ from: account, value: 0 });
-      alert(t);
-    } catch (err: any) {
-      alert(err.message);
-    }
-  }
-
-  async function getOwner(tokenId: number) {
-    try {
-      let t = await contractInteraction.methods.ownerOf(tokenId).call();
-      alert(`The NFTee ID ${tokenId} belongs to the wallet: ${t}`);
-    } catch (err: any) {
-      alert(err.message);
-    }
+  function openModal(modalIndex: number) {
+    setModalContentIndex(modalIndex);
+    setIsOpen(true);
   }
 
   function modalContent() {
@@ -136,13 +121,17 @@ function App() {
       case 0:
         return (
           <Transfer
-            handleTransfer={handleTransfer}
+            contractInteraction={contractInteraction}
+            account={account}
             handleClose={() => setIsOpen(false)}
           />
         );
       case 1:
         return (
-          <Owner getOwner={getOwner} handleClose={() => setIsOpen(false)} />
+          <Owner
+            contractInteraction={contractInteraction}
+            handleClose={() => setIsOpen(false)}
+          />
         );
       case 2:
         return (
@@ -155,11 +144,6 @@ function App() {
       default:
         return null;
     }
-  }
-
-  function openModal(modalIndex: number) {
-    setModalContentIndex(modalIndex);
-    setIsOpen(true);
   }
 
   return (

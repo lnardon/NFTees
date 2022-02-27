@@ -33,15 +33,6 @@
   color: #e5015a;
 }
 
-.hiddenLabel {
-  font-size: 0.85rem;
-  font-weight: 500;
-  width: 100%;
-  margin: 0rem 0rem 0.25rem 0.5rem;
-  color: #fafafa !important;
-  opacity: 0;
-}
-
 .label {
   font-size: 0.85rem;
   font-weight: 500;

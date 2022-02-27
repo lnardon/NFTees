@@ -3,15 +3,21 @@ import { useState } from "react";
 import styles from "./styles.module.css";
 
 interface TransferProps {
-  getOwner: (tokenId: number) => void;
+  contractInteraction: any;
   handleClose: () => void;
 }
 
-const Transfer = ({ getOwner, handleClose }: TransferProps) => {
+const Transfer = ({ contractInteraction, handleClose }: TransferProps) => {
   const [tokenId, setTokenId] = useState(-1);
+  const [owner, setOwner] = useState("");
 
-  function hasContent(variable: number) {
-    return variable >= 0;
+  async function getOwner(tokenId: number) {
+    try {
+      let response = await contractInteraction.methods.ownerOf(tokenId).call();
+      setOwner(response);
+    } catch (err: any) {
+      alert(err.message);
+    }
   }
 
   return (
@@ -25,24 +31,37 @@ const Transfer = ({ getOwner, handleClose }: TransferProps) => {
         />
       </div>
       <h1 className={styles.title}>Get NFTee Owner</h1>
-      {
-        <label
-          htmlFor="tokenId"
-          className={hasContent(tokenId) ? styles.label : styles.hiddenLabel}
-        >
-          Token ID:
-        </label>
-      }
-      <input
-        name="tokenId"
-        type="number"
-        placeholder="NFTee ID"
-        onChange={(e) => setTokenId(parseInt(e.target.value))}
-        className={styles.input}
-      />
-      <button onClick={() => getOwner(tokenId)} className={styles.btn}>
-        Get Owner
-      </button>
+      {owner.length > 0 ? (
+        <h2 className={styles.ownerWallet}>
+          {`NFTee ID #${tokenId} belongs to the wallet: `}
+          <span
+            onClick={() =>
+              window.open(
+                `https://ropsten.etherscan.io/address/${owner}`,
+                "_blank"
+              )
+            }
+          >
+            {owner}
+          </span>
+        </h2>
+      ) : (
+        <>
+          <label htmlFor="tokenId" className={styles.label}>
+            Token ID:
+          </label>
+          <input
+            name="tokenId"
+            type="number"
+            placeholder="NFTee ID"
+            onChange={(e) => setTokenId(parseInt(e.target.value))}
+            className={styles.input}
+          />
+          <button onClick={() => getOwner(tokenId)} className={styles.btn}>
+            Get Owner
+          </button>
+        </>
+      )}
     </div>
   );
 };
