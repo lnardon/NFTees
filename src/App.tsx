@@ -15,6 +15,15 @@ declare global {
   interface Window {
     ethereum: any;
   }
+
+  interface INFTee {
+    blockHash: string;
+    blockNumber: string;
+    hash: string;
+    tokenID: string;
+    confirmations: string;
+    timestamp: string;
+  }
 }
 
 function App() {
@@ -122,17 +131,6 @@ function App() {
     }
   }
 
-  async function getMyNFTees() {
-    try {
-      let response = await contractInteraction.methods
-        .balanceOf(account)
-        .send({ from: account, value: 0 });
-      alert(response);
-    } catch (err: any) {
-      alert(err.message);
-    }
-  }
-
   function modalContent() {
     switch (modalContentIndex) {
       case 0:
@@ -149,7 +147,8 @@ function App() {
       case 2:
         return (
           <MyNFTees
-            getMyNFTees={getMyNFTees}
+            account={account}
+            contractAddress={contractAddress}
             handleClose={() => setIsOpen(false)}
           />
         );

@@ -1,27 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./styles.module.css";
 
-interface TransferProps {
-  getMyNFTees: () => void;
+interface IMyNFTeesProps {
   handleClose: () => void;
+  contractAddress: string;
+  account: string;
 }
 
-const MyNFTees = ({ getMyNFTees }: TransferProps) => {
-  const [wallet, setWallet] = useState("");
-  const [tokenId, setTokenId] = useState(0);
+const MyNFTees = ({
+  contractAddress,
+  account,
+  handleClose,
+}: IMyNFTeesProps) => {
+  const [nftees, setNFTees] = useState<INFTee[]>([]);
+
+  async function getMyNFTees() {
+    try {
+      const response = await fetch(
+        `https://api-ropsten.etherscan.io/api?module=account&action=tokennfttx&contractaddress=${contractAddress}&address=${account}&tag=latest&apikey=${process.env.REACT_APP_ETHERSCAN_API}`
+      );
+      const parsed = await response.json();
+      setNFTees(parsed.result);
+    } catch (err: any) {
+      alert(err.message);
+    }
+  }
+
+  useEffect(() => {
+    getMyNFTees();
+  }, []);
 
   return (
     <div className={styles.container}>
-      <h1>My NFTees</h1>
-      <label htmlFor="tokenId">Type the NFTee ID:</label>
-      <input
-        name="tokenId"
-        type="text"
-        placeholder="23"
-        onChange={(e) => setTokenId(parseInt(e.target.value))}
-      />
-      <button onClick={() => getMyNFTees()}>My NFTees</button>
+      <div className={styles.closeDiv}>
+        <img
+          onClick={handleClose}
+          src="https://cdn-icons-png.flaticon.com/512/463/463612.png"
+          alt="Close Icon"
+          className={styles.closeBtn}
+        />
+      </div>
+      <h1 className={styles.title}>My NFTees</h1>
+      <label htmlFor="tokenId" className={styles.label}>
+        Type the NFTee ID:
+      </label>
+      {nftees &&
+        nftees.map((token) => {
+          return (
+            <label htmlFor="tokenId" className={styles.label}>
+              {token.tokenID}
+            </label>
+          );
+        })}
     </div>
   );
 };
