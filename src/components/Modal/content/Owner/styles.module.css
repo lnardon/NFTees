@@ -72,17 +72,25 @@
 }
 
 .ownerWallet {
-  width: 100%;
+  width: 90%;
   font-size: 1.5rem;
-  line-height: 1.75rem;
-  font-weight: 500;
+  line-height: 2rem;
+  font-weight: 400;
   color: #fafafa;
   text-align: center;
   word-wrap: break-word;
 }
 
-span:hover {
-  color: #5801e5;
+span {
   font-weight: 500;
   cursor: pointer;
+  background-color: #5801e5;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  margin: 0.25rem 0rem;
+}
+
+span:hover {
+  background-color: transparent;
+  color: #5801e5;
 }

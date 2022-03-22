@@ -33,7 +33,7 @@ const Transfer = ({ contractInteraction, handleClose }: TransferProps) => {
       <h1 className={styles.title}>Get NFTee Owner</h1>
       {owner.length > 0 ? (
         <h2 className={styles.ownerWallet}>
-          {`NFTee ID #${tokenId} belongs to the wallet: `}
+          {`NFTee ID ${tokenId} belongs to the wallet: `}
           <span
             onClick={() =>
               window.open(
