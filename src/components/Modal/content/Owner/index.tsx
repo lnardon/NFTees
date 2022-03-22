@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import closeIcon from "../../../../assets/close.png";
 import styles from "./styles.module.css";
 
 interface TransferProps {
@@ -25,7 +26,7 @@ const Transfer = ({ contractInteraction, handleClose }: TransferProps) => {
       <div className={styles.closeDiv}>
         <img
           onClick={handleClose}
-          src="https://cdn-icons-png.flaticon.com/512/463/463612.png"
+          src={closeIcon}
           alt="Close Icon"
           className={styles.closeBtn}
         />
