@@ -1,7 +1,11 @@
 .container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   margin: 2rem 1rem;
+  width: 100%;
+  max-width: 1400px;
 }
 
 .title {
@@ -18,7 +22,7 @@
   background-color: #e5015a;
   font-size: 1.125rem;
   font-weight: 700;
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
   cursor: pointer;
   margin: 0rem 1rem 2rem 1rem;
   transition: all 0.3s ease;

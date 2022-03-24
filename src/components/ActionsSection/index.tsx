@@ -26,7 +26,7 @@ export function ActionsSection({
         </button>
       )}
       {userAddress.length > 0 && (
-        <div className={styles.actionsDiv}>
+        <div className={styles.actionsDiv + " actionsRef"}>
           <ActionCard
             image={TransferIcon}
             label="Transfer Ownership"

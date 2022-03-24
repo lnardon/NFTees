@@ -31,7 +31,7 @@ function App() {
   const [account, setAccount] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [modalContentIndex, setModalContentIndex] = useState(4);
-  const contractAddress = "0xCAE8090822704A19B3FE6ebae40F092b6B9eb624";
+  const contractAddress = "0x868c1bc5e4f58e34e4a85240c37b89dbfb46e07e";
   const contractInteraction = new web3.eth.Contract(
     NFTEEContract.abi as AbiItem[],
     contractAddress
@@ -53,6 +53,7 @@ function App() {
     setWeb3(web3);
     const accounts = await web3.eth.getAccounts();
     setAccount(accounts[0]);
+    scrollToSection("actionsRef");
   }
 
   function isLoggedIn() {
@@ -70,9 +71,12 @@ function App() {
           .mintStandard()
           .send({ from: account, value: 0 });
         alert(response);
+        console.log(response);
       } catch (err: any) {
         alert(err.message);
       }
+    } else {
+      alert("Please connect your Metamask Wallet to get you NFTee.");
     }
   }
 
@@ -86,6 +90,8 @@ function App() {
       } catch (err: any) {
         alert(err.message);
       }
+    } else {
+      alert("Please connect your Metamask Wallet to get you NFTee.");
     }
   }
 
@@ -99,11 +105,13 @@ function App() {
       } catch (err: any) {
         alert(err.message);
       }
+    } else {
+      alert("Please connect your Metamask Wallet to get you NFTee.");
     }
   }
 
-  function scrollToSection() {
-    let collectionDiv = document.getElementsByClassName("collectionRef")[0];
+  function scrollToSection(classname: string) {
+    let collectionDiv = document.getElementsByClassName(classname)[0];
     window.scrollTo({
       left: 0,
       top: collectionDiv.getBoundingClientRect().top,
@@ -153,7 +161,7 @@ function App() {
         handleClose={() => setIsOpen(false)}
         renderProps={modalContent}
       />
-      <SplashSection scrollToSection={scrollToSection} />
+      <SplashSection scrollToSection={() => scrollToSection("collectionRef")} />
       <CollectionSection
         getStandardEditionNFT={buyStandardNFT}
         getPinkEditionNFT={getPinkEditionNFT}
