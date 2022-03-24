@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1400px;
   height: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,7 +43,9 @@
   width: 100%;
   color: #e5015a;
   font-size: 5rem;
+  line-height: 6.5rem;
   font-weight: bold;
+  word-break: break-all;
 }
 
 .subtitle {

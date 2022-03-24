@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  max-width: 1400px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,7 +21,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -50,4 +51,10 @@
   cursor: pointer;
   outline: none;
   width: calc(100% - 2rem);
+}
+
+@media (max-width: 799px) {
+  .collectionItems {
+    justify-content: center;
+  }
 }
