@@ -27,10 +27,15 @@
 .title {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   width: 100%;
   text-align: center;
   color: #e5015a;
+}
+
+.loader {
+  width: 15%;
+  margin-bottom: 0.5rem;
 }
 
 .label {

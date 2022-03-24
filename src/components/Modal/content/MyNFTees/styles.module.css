@@ -27,10 +27,14 @@
 .title {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   width: 100%;
   text-align: center;
   color: #e5015a;
+}
+
+.loader {
+  width: 15%;
 }
 
 .hiddenLabel {
@@ -78,4 +82,24 @@
   color: #fafafa;
   margin-top: 1rem;
   cursor: pointer;
+}
+
+.nftsContainer {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.nftCard {
+  min-width: 150px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 1rem;
+  background: white;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

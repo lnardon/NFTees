@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import closeIcon from "../../../../assets/close.png";
+import loadSVG from "../../../../assets/load.svg";
 import styles from "./styles.module.css";
 
 interface IMyNFTeesProps {
@@ -52,15 +53,25 @@ const MyNFTees = ({
       </div>
       <h1 className={styles.title}>My NFTees</h1>
       {nftees ? (
-        nftees.map((token) => {
-          return (
-            <label htmlFor="tokenId" className={styles.label}>
-              {token.tokenID}
-            </label>
-          );
-        })
+        <div className={styles.nftsContainer}>
+          {nftees.map((token) => {
+            return (
+              <div
+                className={styles.nftCard}
+                onClick={() =>
+                  window.open(
+                    `https://ropsten.etherscan.io/tx/${token.hash}`,
+                    "_blank"
+                  )
+                }
+              >
+                <h3>NFTee #{token.tokenID}</h3>
+              </div>
+            );
+          })}
+        </div>
       ) : (
-        <h4>Loading...</h4>
+        <img className={styles.loader} src={loadSVG} alt="Loading Spinner" />
       )}
     </div>
   );

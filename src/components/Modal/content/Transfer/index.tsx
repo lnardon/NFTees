@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import closeIcon from "../../../../assets/close.png";
+import loadSVG from "../../../../assets/load.svg";
 import styles from "./styles.module.css";
 
 interface TransferProps {
@@ -43,10 +44,13 @@ const Transfer = ({
       </div>
       <h1 className={styles.title}>Transfer ownership</h1>
       {waitingConfirmation ? (
-        <h2 className={styles.waitMessage}>
-          Leave this window open to get notified when the transaction is
-          confirmed by the blockchain.
-        </h2>
+        <>
+          <img className={styles.loader} src={loadSVG} alt="Loading Spinner" />
+          <h2 className={styles.waitMessage}>
+            Leave this window open to get notified when the transaction is
+            confirmed by the blockchain.
+          </h2>
+        </>
       ) : (
         <>
           <label htmlFor="tokenId" className={styles.label}>
