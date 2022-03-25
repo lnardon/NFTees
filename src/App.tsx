@@ -10,6 +10,7 @@ import Modal from "./components/Modal";
 import Transfer from "./components/Modal/content/Transfer";
 import Owner from "./components/Modal/content/Owner";
 import MyNFTees from "./components/Modal/content/MyNFTees";
+import BuyNFTee from "./components/Modal/content/BuyNFTee";
 
 declare global {
   interface Window {
@@ -30,7 +31,7 @@ function App() {
   const [web3, setWeb3] = useState(new Web3());
   const [account, setAccount] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [modalContentIndex, setModalContentIndex] = useState(4);
+  const [modalContentIndex, setModalContentIndex] = useState(7);
   const contractAddress = "0x868c1bc5e4f58e34e4a85240c37b89dbfb46e07e";
   const contractInteraction = new web3.eth.Contract(
     NFTEEContract.abi as AbiItem[],
@@ -67,6 +68,9 @@ function App() {
   async function buyStandardNFT() {
     if (isLoggedIn()) {
       try {
+        setModalContentIndex(3);
+        setIsOpen(true);
+        modalContent();
         let response = await contractInteraction.methods
           .mintStandard()
           .send({ from: account, value: 0 });
@@ -75,6 +79,7 @@ function App() {
       } catch (err: any) {
         alert(err.message);
       }
+      setIsOpen(false);
     } else {
       alert("Please connect your Metamask Wallet to get you NFTee.");
     }
@@ -146,6 +151,13 @@ function App() {
           <MyNFTees
             account={account}
             contractAddress={contractAddress}
+            handleClose={() => setIsOpen(false)}
+          />
+        );
+      case 3:
+        return (
+          <BuyNFTee
+            contractInteraction={contractInteraction}
             handleClose={() => setIsOpen(false)}
           />
         );
