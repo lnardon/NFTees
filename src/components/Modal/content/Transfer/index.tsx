@@ -47,8 +47,9 @@ const Transfer = ({
         <>
           <img className={styles.loader} src={loadSVG} alt="Loading Spinner" />
           <h2 className={styles.waitMessage}>
-            Leave this window open to get notified when the transaction is
-            confirmed by the blockchain.
+            Confirm the transaction on your metamask wallet and leave this
+            window open to get notified when the transaction is confirmed by the
+            blockchain.
           </h2>
         </>
       ) : (

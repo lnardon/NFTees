@@ -103,3 +103,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.emptyLabel {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #fafafa;
+}

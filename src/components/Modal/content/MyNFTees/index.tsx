@@ -54,21 +54,25 @@ const MyNFTees = ({
       <h1 className={styles.title}>My NFTees</h1>
       {nftees ? (
         <div className={styles.nftsContainer}>
-          {nftees.map((token) => {
-            return (
-              <div
-                className={styles.nftCard}
-                onClick={() =>
-                  window.open(
-                    `https://ropsten.etherscan.io/tx/${token.hash}`,
-                    "_blank"
-                  )
-                }
-              >
-                <h3>NFTee #{token.tokenID}</h3>
-              </div>
-            );
-          })}
+          {nftees.length > 0 ? (
+            nftees.map((token) => {
+              return (
+                <div
+                  className={styles.nftCard}
+                  onClick={() =>
+                    window.open(
+                      `https://ropsten.etherscan.io/tx/${token.hash}`,
+                      "_blank"
+                    )
+                  }
+                >
+                  <h3>NFTee #{token.tokenID}</h3>
+                </div>
+              );
+            })
+          ) : (
+            <h3 className={styles.emptyLabel}>You have 0 NFTees</h3>
+          )}
         </div>
       ) : (
         <img className={styles.loader} src={loadSVG} alt="Loading Spinner" />
