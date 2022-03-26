@@ -1,14 +1,14 @@
 # [NFTee's](https://nftees.web.app/ "Homepage")
 
-NFTee's is a NFT website running on top of the Ethereum Ropsten Test Net. You'll need MetaMask to interact with the application.
+NFTee's is a NFT website with a smart contract running on top of the Ethereum Ropsten Test Net. You'll need MetaMask to interact with the application.
 
 <p align="center">
-  <img src="./demo.PNG">
+  <video autoplay style="width:100%" src="./demo.webm">
 </p>
 
 ## [Access it here](https://nftees.web.app/ "Homepage")
 
-Check out the contract on EtherScan : https://ropsten.etherscan.io/token/0x550b5c850ecde5c848195e9867e3d41195ddad48?a=0x2ed2c5a08cf6262edec7847f523fa0d622354fab
+Check out the contract on EtherScan :https://ropsten.etherscan.io/address/0x868c1bc5e4f58e34e4a85240c37b89dbfb46e07e
 
 ### What was used
 
@@ -16,7 +16,6 @@ Check out the contract on EtherScan : https://ropsten.etherscan.io/token/0x550b5
 - Typescript
 - Solidity
 - Ethereum Ropsten Test Network
-- Factory Pattern
 - Firebase Hosting
 - Metamask
-- Truffle
+- Github Actions for CI/CD
