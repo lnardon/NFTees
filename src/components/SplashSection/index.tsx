@@ -22,7 +22,7 @@ export const SplashSection = ({ scrollToSection }: PropsInterface) => {
         <AnimatedOnView
           renderProps={() => (
             <h2 className="subtitle">
-              Get your unique NFTEE from our collection on the Ethereum Ropsten
+              Get your unique NFTee from our collection on the Ethereum Ropsten
               Test Network.
             </h2>
           )}
