@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 
 interface IMyNFTeesProps {
   handleClose: () => void;
+  getNFTeeData: (tokenId: string) => void;
   contractAddress: string;
   account: string;
 }
@@ -14,6 +15,7 @@ const MyNFTees = ({
   contractAddress,
   account,
   handleClose,
+  getNFTeeData,
 }: IMyNFTeesProps) => {
   const [nftees, setNFTees] = useState<any[] | null>(null);
 
@@ -59,12 +61,7 @@ const MyNFTees = ({
               return (
                 <div
                   className={styles.nftCard}
-                  onClick={() =>
-                    window.open(
-                      `https://ropsten.etherscan.io/tx/${token.hash}`,
-                      "_blank"
-                    )
-                  }
+                  onClick={() => getNFTeeData(token.tokenID)}
                 >
                   <h3>NFTee #{token.tokenID}</h3>
                 </div>

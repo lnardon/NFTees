@@ -123,6 +123,19 @@ function App() {
     }
   }
 
+  async function getNFTeeData(tokenId: string) {
+    if (isLoggedIn()) {
+      try {
+        let response = await contractInteraction.methods
+          .tokenURI(tokenId)
+          .call();
+        window.open(response, "_blank");
+      } catch (err: any) {
+        alert(err.message);
+      }
+    }
+  }
+
   function scrollToSection(classname: string) {
     let collectionDiv = document.getElementsByClassName(classname)[0];
     window.scrollTo({
@@ -160,6 +173,7 @@ function App() {
             account={account}
             contractAddress={contractAddress}
             handleClose={() => setIsOpen(false)}
+            getNFTeeData={getNFTeeData}
           />
         );
       case 3:
