@@ -88,6 +88,9 @@ function App() {
   async function getPinkEditionNFT() {
     if (isLoggedIn()) {
       try {
+        setModalContentIndex(3);
+        setIsOpen(true);
+        modalContent();
         let response = await contractInteraction.methods
           .mintPinkEdition()
           .send({ from: account, value: 1000000000000000000 });
@@ -95,6 +98,7 @@ function App() {
       } catch (err: any) {
         alert(err.message);
       }
+      setIsOpen(false);
     } else {
       alert("Please connect your Metamask Wallet to get you NFTee.");
     }
@@ -103,6 +107,9 @@ function App() {
   async function getFoundersNFT() {
     if (isLoggedIn()) {
       try {
+        setModalContentIndex(3);
+        setIsOpen(true);
+        modalContent();
         let response = await contractInteraction.methods
           .mintFoundersEdition()
           .send({ from: account, value: 5000000000000000000 });
@@ -110,6 +117,7 @@ function App() {
       } catch (err: any) {
         alert(err.message);
       }
+      setIsOpen(false);
     } else {
       alert("Please connect your Metamask Wallet to get you NFTee.");
     }
@@ -155,12 +163,7 @@ function App() {
           />
         );
       case 3:
-        return (
-          <BuyNFTee
-            contractInteraction={contractInteraction}
-            handleClose={() => setIsOpen(false)}
-          />
-        );
+        return <BuyNFTee handleClose={() => setIsOpen(false)} />;
       default:
         return null;
     }

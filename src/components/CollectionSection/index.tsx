@@ -40,7 +40,7 @@ export function CollectionSection({
                 className={styles.image}
               />
               <button className={styles.cta} onClick={getStandardEditionNFT}>
-                Get Standard NFT
+                Buy Standard NFTee
               </button>
             </div>
           )}
@@ -57,7 +57,7 @@ export function CollectionSection({
                 className={styles.image}
               />
               <button className={styles.cta} onClick={getPinkEditionNFT}>
-                Buy Pink NFT
+                Buy Pink NFTee
               </button>
             </div>
           )}
@@ -74,7 +74,7 @@ export function CollectionSection({
                 className={styles.image}
               />
               <button className={styles.cta} onClick={getFoundersNFT}>
-                Buy Founders NFT
+                Buy Founders NFTee
               </button>
             </div>
           )}

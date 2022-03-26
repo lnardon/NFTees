@@ -38,10 +38,11 @@
 
 .image {
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .cta {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   border: none;
   font-size: 1.125rem;
   font-weight: bold;
@@ -51,6 +52,11 @@
   cursor: pointer;
   outline: none;
   width: calc(100% - 2rem);
+  transition: all 0.3s ease;
+}
+
+.cta:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 799px) {

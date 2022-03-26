@@ -36,3 +36,12 @@
 .loader {
   width: 15%;
 }
+
+.waitMessage {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  color: #fafafa;
+  width: 80%;
+}
