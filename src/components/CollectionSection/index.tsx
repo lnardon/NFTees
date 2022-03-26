@@ -2,9 +2,9 @@ import AnimatedOnView from "../AnimatedOnView";
 import { slideUp } from "../../animations/slideUp";
 import { slideLeft } from "../../animations/slideLeft";
 
-import Founders from "../../assets/fe.png";
-import Standard from "../../assets/st.png";
-import Pink from "../../assets/pe.png";
+import Founders from "../../assets/optimized_images/fe.webp";
+import Standard from "../../assets/optimized_images/se.webp";
+import Pink from "../../assets/optimized_images/pe.webp";
 import styles from "./styles.module.css";
 
 interface PropsInterface {

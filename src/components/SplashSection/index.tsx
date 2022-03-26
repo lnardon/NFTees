@@ -2,7 +2,7 @@ import AnimatedOnView from "../AnimatedOnView";
 import { slideUp } from "../../animations/slideUp.js";
 import { slideLeft } from "../../animations/slideLeft.js";
 
-import SplashIllustration from "../../assets/SplashIllustration.svg";
+import SplashIllustration from "../../assets/optimized_images/splash.webp";
 import "./styles.css";
 
 interface PropsInterface {
