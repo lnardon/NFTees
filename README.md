@@ -3,7 +3,7 @@
 NFTee's is a NFT website with a smart contract running on top of the Ethereum Ropsten Test Net. You'll need MetaMask to interact with the application.
 
 <p align="center">
-  <video autoplay style="width:100%" src="./demo.webm">
+  <img style="width:100%" src="./demo.gif">
 </p>
 
 ## [Access it here](https://nftees.web.app/ "Homepage")
