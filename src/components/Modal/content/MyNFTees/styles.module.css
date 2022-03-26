@@ -93,15 +93,28 @@
 }
 
 .nftCard {
-  min-width: 150px;
   padding: 0.5rem 1rem;
   margin: 0.5rem 1rem;
-  background: white;
+  background: transparent;
   cursor: pointer;
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  color: #fafafa;
+  border: 3px solid #5801e5;
+}
+
+.nftCard:hover {
+  transform: scale(1.1);
+  background: #5801e5;
+  color: #fafafa;
+}
+
+.cardLabel {
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .emptyLabel {

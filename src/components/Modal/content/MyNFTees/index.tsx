@@ -63,7 +63,7 @@ const MyNFTees = ({
                   className={styles.nftCard}
                   onClick={() => getNFTeeData(token.tokenID)}
                 >
-                  <h3>NFTee #{token.tokenID}</h3>
+                  <h3 className={styles.cardLabel}>ID#{token.tokenID}</h3>
                 </div>
               );
             })
